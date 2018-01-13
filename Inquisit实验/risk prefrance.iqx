@@ -1,0 +1,139 @@
+﻿<item fangan>
+/1 = "A.bmp"
+/2 = "B.bmp"
+/3 = "C.bmp"
+/4 = "D.bmp"
+/5 = "E.bmp"
+/6 = "F.bmp"
+</item>
+
+<item xuanze1>
+/1 = "xuanze1.bmp"
+</item>
+
+<item xuanze2>
+/1 = "xuanze2.bmp"
+</item>
+<item question1>
+/1="假如你有五个筹码，每个价值￥20"
+
+</item>
+
+<item question2>
+/1="请你选择将多少筹码投入方案A，其余筹码将投入方案B"
+
+</item>
+
+<instruct myinstruct>
+	/nextkey = (" ")
+	/fontstyle = ("楷体", 3%, false, false, false, false, 5, 1)
+	/txcolor = (0,0,0)
+	/screencolor = (255,255,255)
+	/lastlabel = "请按空格键继续"
+	/windowsize = (1000,700)
+</instruct>
+<page begininstruction1>^^^^您好，非常欢迎您参与我们的研究！^^我们当前的研究是测验您的风险偏好。^^请您对不同投资方案进行选择或分配！请按空格键继续！^^</page>
+
+<page endinstruction1>^^^^请您稍微休息一下!^^如果您休息好了，准备进入下一阶段的实验，请您按空格键！^^</page>
+
+<page endinstruction2>^^^^非常感谢您的参与，您提供的行为数据对我们的研究特别重要!^^为表达感谢，请您找主试领取被试费！^^再次感谢您的参与！^^</page>
+
+<item correctmsg>
+	/1 = "投资成功"
+</item>
+
+<item errormsg>
+	/1 = "投资失败"
+</item>
+
+<text correctmsg>
+	/items = correctmsg
+	/select = 1
+	/fontstyle = ("楷体", 60ptc, false, false, false, false, 5, 1)
+	/txcolor = (255,255,255)
+	/txbgcolor = (0, 0, 0)
+</text>
+
+<text errormsg>
+	/items = errormsg
+	/select = 1
+	/fontstyle = ("楷体", 60ptc, false, false, false, false, 5, 1)
+	/txcolor = (255,255,255)
+	/txbgcolor = (0, 0, 0)
+</text>
+
+<text question1>
+/items = question1
+	/select = 1
+	/fontstyle = ("楷体", 30ptc, false, false, false, false, 5, 1)
+	/txcolor = (0,0,0)
+	/txbgcolor = (255,255,255)
+/position = (50,65)
+
+
+</text>
+
+<text question2>
+/items = question2
+	/select = 1
+	/fontstyle = ("楷体", 30ptc, false, false, false, false, 5, 1)
+	/txcolor = (0,0,0)
+	/txbgcolor = (255,255,255)
+/position = (50,70)
+
+
+</text>
+<picture fangan>
+	/erase = True(0,0,0) 
+	/halign = center
+	/items = fangan
+	/size = (1000,800)
+</picture>
+
+<picture xuanze1>
+	/erase = True(0,0,0) 
+	/halign = center
+	/items = xuanze1
+	/size = (1200,1200)
+</picture>
+
+<picture xuanze2>
+	/erase = True(0,0,0) 
+	/halign = center
+	/items = fangan
+	/size = (1200,1200)
+</picture>
+
+<trial fangantrial1>
+    /pretrialpause = 500
+    /validresponse = ("F","J")
+    /stimulusframes = [1 =xuanze1;100= fangan]
+</trial>
+
+<likert fangantrial2>
+    /pretrialpause = 500
+/position = (50,80)
+/ anchors = [1=" ",2=" ",3=" ",4=" ",5=" ",6=" "]
+/numpoints = 6
+    /stimulusframes = [1= fangan;100=question1;100=question2]
+/buttonvalues =  [1="0",2="1",3="2",4="3",5="4",6="5"]
+</likert>
+
+<block fenpeiblock1>
+    /screencolor = (0,0,0)
+    /trials = [1-6 = noreplace(fangantrial1)]
+</block>
+
+<block fangantrial2>
+    /screencolor = (0,0,0)
+    /trials = [1-6 = noreplace(fangantrial2)]
+</block>
+
+<block instructblk>
+    /screencolor = (0,0,0)
+    /preinstructions = (begininstruction1)
+</block>
+
+<expt>
+    / blocks = [1 = instructblk; 2 = fenpeiblock1; 3 = fangantrial2]
+</expt>
